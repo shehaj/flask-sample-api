@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 import psutil
+import requests
 
 app = Flask(__name__)
 
@@ -21,3 +22,8 @@ def show_processes():
     for process in processes:
         processes_list.append({"Process ID": process.pid, "Name": process.name()})
     return jsonify(processes_list)
+
+@app.route("/cat-facts")
+def get_cat_fact():
+    response = requests.get("https://catfact.ninja/fact")
+    return jsonify(response.json())

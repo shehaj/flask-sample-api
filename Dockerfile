@@ -4,7 +4,7 @@ WORKDIR /application
 
 COPY api.py /application
 
-RUN pip install flask psutil
+RUN pip install flask psutil requests
 
 EXPOSE 5000
 
